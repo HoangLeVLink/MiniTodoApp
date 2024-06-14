@@ -31,6 +31,4 @@ if ($tableExistsResult->num_rows == 0) {
 } else {
     echo "Table todo_list already exists, skipping creation.";
 }
-  
-// $conn->close();
 ?>

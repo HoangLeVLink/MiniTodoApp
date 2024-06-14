@@ -5,6 +5,10 @@
         // echo "controller ".$controller."\n";
         if (isset($_GET['action'])) {
             $action = $_GET['action'];
+            if ($action == 'edit') {
+                if (isset($_GET['id'])) $id = $_GET['id'];
+                else die("ID needed");
+            }
         } else {
             $action = 'list';
         }
