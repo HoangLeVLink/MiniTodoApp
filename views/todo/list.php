@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Index Page</title>
+    <title>List</title>
 </head>
 <body>
     <div style="text-align: center;">
@@ -11,7 +11,7 @@
         if ($result->num_rows > 0) {
             // output data of each row
             while($row = $result->fetch_assoc()) {
-                echo "id: " . $row["id"]. " - Name: " . $row["todo_name"]. " " . $row["content"]. "<br>";
+                echo "ID: " . $row["id"]. " - Name: " . $row["todo_name"] . "<br>";
             }
         } else {
             echo "0 results";

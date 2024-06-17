@@ -15,8 +15,20 @@
 
         function new()
         {
+            include_once("views/todo/new.php");
+            if (empty($todo_name)) echo ("Awaiting ... (Todo Name required!!!)<br>");
+            else $this->_DB->new($todo_name, $content);
+        }
+        function edit($id)
+        {
             include_once("views/todo/edit.php");
-            $this->_DB->new($todo_name, $content);
+            if (empty($todo_name) && empty($content)) echo ("Please make changes<br>");
+            else $this->_DB->edit($id, $todo_name, $content);
+        }
+        function detail($id)
+        {
+            $result = $this->_DB->detail($id);
+            include_once("views/todo/detail.php");
         }
     }
 

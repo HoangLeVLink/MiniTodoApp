@@ -11,56 +11,42 @@ class Model
     # Destructor -> Close connection
     function __destruct () {
         $this->conn->close();
+        echo "Connection closed.<br>";
     }
     # Retrieve full table
     function list () {
-        $sql = "SELECT id, todo_name, content FROM todo_list";
-        $result = $this->conn->query($sql);
-
-        // if ($result->num_rows > 0) {
-        // // Output data of each row
-        // while($row = $result->fetch_assoc()) {
-        //     echo "id: " . $row["id"]. " - Name: " . $row["todo_name"]. " " . $row["content"]. "<br>";
-        // }
-        // } else {
-        //     echo "0 results";
-        // }
-
-        return $result;
+        $sql = "SELECT id, todo_name FROM todo_list";
+        return $this->conn->query($sql);
     }
     # Insert new data
     function new ($todo_name, $content) {
         $sql = "INSERT INTO todo_list (todo_name, content) VALUES ('$todo_name', '$content')";
 
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+        if ($this->conn->query($sql) === TRUE) {
+            echo "New record created successfully<br>";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $sql . "<br>" . $conn->error . "<br>";
         }
     }
     # Edit data
     function edit ($id, $todo_name, $content) {
-        $sql = "UPDATE todo_list SET todo_name=$todo_name, content=$content WHERE id=$id";
+        $t = empty($todo_name) ? "" : "todo_name='$todo_name'";
+        $c = empty($content) ? "" : "content='$content'";
+        if ($t != "" && $c != "") $add = $t . "," . $c;
+        else $add = $t . $c;
 
-        if ($conn->query($sql) === TRUE) {
-        echo "Record updated successfully";
+        $sql = "UPDATE todo_list SET $add WHERE id=$id";
+        
+        if ($this->conn->query($sql) === TRUE) {
+        echo "Record updated successfully<br>";
         } else {
-        echo "Error updating record: " . $conn->error;
+        echo "Error updating record: " . $conn->error . "<br>";
         }
     }
     # See detail
     function detail ($id) {
-        $sql = "SELECT content FROM todo_list WHERE id=$id";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-        // Output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo $row["content"]. "<br>";
-        }
-        } else {
-            echo "0 results";
-        }
+        $sql = "SELECT id,content FROM todo_list WHERE id=$id";
+        return $this->conn->query($sql);
     }
 }
 
