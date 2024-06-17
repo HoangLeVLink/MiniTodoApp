@@ -6,6 +6,9 @@
         public function __construct($db) {
             $this->_DB = $db;
         }
+        public function __destruct() {
+            // Dont know wat to put here really
+        }
         # View
         function list()
         {
