@@ -11,7 +11,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully.<br>";
+// echo "Connected successfully.<br>";
 
 $tableName = "todo_list";
 $tableExistsQuery = "SHOW TABLES LIKE '$tableName'";
@@ -24,11 +24,11 @@ if ($tableExistsResult->num_rows == 0) {
     content VARCHAR(30)
     )";
     if ($conn->query($sql) === TRUE) {
-        echo "Table todo_list created successfully<br>";
+        // echo "Table todo_list created successfully<br>";
     } else {
         echo "Error creating table: " . $conn->error . "<br>";
     }
 } else {
-    echo "Table todo_list already exists, skipping creation.<br>";
+    // echo "Table todo_list already exists, skipping creation.<br>";
 }
 ?>
