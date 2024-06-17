@@ -19,7 +19,6 @@
         
         ?>
         <br>
-        <!-- <a href="./views/todo/new.php"><button>Add New Todo</button></a> -->
     </div>
 </body>
 </html>
