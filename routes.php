@@ -20,8 +20,7 @@
             include_once("controllers/$this->controller.php");
             $_CONTROL = new Controller($_DB);
             $actionMethod = $this->action;
-            if ($this->action == 'edit' || $this->action == 'detail') $_CONTROL->$actionMethod($this->id);
-            else $_CONTROL->$actionMethod();
+            isset($this->id) ? $_CONTROL->$actionMethod($this->id) : $_CONTROL->$actionMethod();
         }
     }
 ?>
