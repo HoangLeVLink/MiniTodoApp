@@ -4,16 +4,20 @@
         $controller = $_GET['controller'];
         if (isset($_GET['action'])) {
             $action = $_GET['action'];
-            if ($action == 'edit' || $action == 'detail') {
-                if (isset($_GET['id'])) $id = $_GET['id'];
-                else die("ID needed");
-            }
         } else {
             $action = 'list';
         }
     } else {
         die("No controller");
     }
+    if ($action == 'edit' || $action == 'detail') {
+        if (isset($_GET['id'])) $id = $_GET['id'];
+        else die("ID needed");
+    }
+    else $id = NULL;
     
-    require_once('routes.php');
+    include_once('routes.php');
+
+    $_ROUTE = new Route($controller, $action, $id);
+    $_ROUTE->control();
 ?>

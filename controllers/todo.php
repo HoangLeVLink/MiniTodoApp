@@ -1,5 +1,7 @@
 <?php
     include_once("models/todo.php");
+    $_DB = new Model();
+
     class Controller
     {
         private $_DB;
@@ -7,7 +9,7 @@
             $this->_DB = $db;
         }
         public function __destruct() {
-            // Dont know wat to put here really
+            // Destructor
         }
         # View
         function list()
@@ -34,7 +36,4 @@
             include_once("views/todo/detail.php");
         }
     }
-
-    $_CONTROL = new Controller($_DB);
-
 ?>

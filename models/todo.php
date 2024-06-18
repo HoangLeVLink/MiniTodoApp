@@ -49,7 +49,4 @@ class Model
         return $this->conn->query($sql);
     }
 }
-
-$_DB = new Model();
-
 ?>
