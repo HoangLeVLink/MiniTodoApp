@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "files": [
+            "routes.php"
+        ],
+        "psr-4": {
+            "Models\\": "models/",
+            "Controllers\\": "controllers/"
+        }
+    }
+}

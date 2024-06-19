@@ -1,4 +1,7 @@
 <?php
+    use Controllers\Todo as Controller;
+    use Models\Todo as Model;
+    
     class Route 
     {
         private $controller;
@@ -17,7 +20,7 @@
         }
         function control ()
         {
-            include_once("controllers/$this->controller.php");
+            $_DB = new Model();
             $_CONTROL = new Controller($_DB);
             $actionMethod = $this->action;
             isset($this->id) ? $_CONTROL->$actionMethod($this->id) : $_CONTROL->$actionMethod();

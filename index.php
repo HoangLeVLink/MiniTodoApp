@@ -1,4 +1,6 @@
 <?php
+    require './vendor/autoload.php';
+
     if (isset($_GET['controller']))
     {
         $controller = $_GET['controller'];
@@ -16,8 +18,6 @@
     }
     else $id = NULL;
     
-    include_once('routes.php');
-
     $_ROUTE = new Route($controller, $action, $id);
     $_ROUTE->control();
 ?>

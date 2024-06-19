@@ -1,5 +1,7 @@
 <?php
-class Model
+namespace Models;
+
+class Todo
 {
     private $conn;
     
