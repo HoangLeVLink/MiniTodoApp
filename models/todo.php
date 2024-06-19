@@ -22,33 +22,48 @@ class Todo
     }
     # Insert new data
     function new ($todo_name, $content) {
-        $sql = "INSERT INTO todo_list (todo_name, content) VALUES ('$todo_name', '$content')";
-
-        if ($this->conn->query($sql) === TRUE) {
-            // echo "New record created successfully<br>";
+        $sql = $this->conn->prepare("INSERT INTO todo_list (todo_name, content) VALUES (?, ?)");
+        $sql->bind_param("ss", $todo_name, $content);
+        if ($sql->execute()) {
+            echo "New record created successfully (riel)<br>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error . "<br>";
         }
+        $sql->close();
     }
     # Edit data
     function edit ($id, $todo_name, $content) {
-        $t = empty($todo_name) ? "" : "todo_name='$todo_name'";
-        $c = empty($content) ? "" : "content='$content'";
-        if ($t != "" && $c != "") $add = $t . "," . $c;
-        else $add = $t . $c;
-
-        $sql = "UPDATE todo_list SET $add WHERE id=$id";
-        
-        if ($this->conn->query($sql) === TRUE) {
-            // echo "Record updated successfully<br>";
+        if (!empty($todo_name) && !empty($content))
+        {
+            $sql = $this->conn->prepare("UPDATE todo_list SET todo_name=?, content=? WHERE id=?");
+            $sql->bind_param("ssi", $todo_name, $content, $id);
+        }
+        elseif (!empty($todo_name))
+        {
+            $sql = $this->conn->prepare("UPDATE todo_list SET todo_name=? WHERE id=?");
+            $sql->bind_param("si", $todo_name, $id);
+        }
+        else
+        {
+            $sql = $this->conn->prepare("UPDATE todo_list SET content=? WHERE id=?");
+            $sql->bind_param("si", $content, $id);
+        }
+        if ($sql->execute()) {
+            echo "Record updated successfully (riel)<br>";
         } else {
             echo "Error updating record: " . $conn->error . "<br>";
         }
+        $sql->close();
     }
     # See detail
     function detail ($id) {
-        $sql = "SELECT id,todo_name,content FROM todo_list WHERE id=$id";
-        return $this->conn->query($sql);
+        $sql = $this->conn->prepare("SELECT id,todo_name,content FROM todo_list WHERE id=?");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+        $result = $sql->get_result();
+        // $row = $result->fetch_assoc();
+        // $sql->closed(); //no closing, i know, right?
+        return $result;
     }
 }
 ?>

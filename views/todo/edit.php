@@ -96,7 +96,7 @@
                 // Process the form (for example, update database)
                 // Here, you might want to call your database method to update data
                 // For demonstration, we will just show a success message
-                echo '<div class="form-feedback success">Todo updated successfully: ' . htmlspecialchars($todo_name) . '</div>';
+                echo '<div class="form-feedback success">Todo updated successfully: ' . htmlspecialchars($todo_name.'/'.$content) . '</div>';
                 // You may redirect or perform additional actions after successful submission
                 // header('Location: list.php'); // Redirect example
             }

@@ -13,8 +13,7 @@ if ($conn->connect_error) {
 }
 // echo "Connected successfully.<br>";
 
-$tableName = "todo_list";
-$tableExistsQuery = "SHOW TABLES LIKE '$tableName'";
+$tableExistsQuery = "SHOW TABLES LIKE 'todo_list'";
 $tableExistsResult = $conn->query($tableExistsQuery);
 if ($tableExistsResult->num_rows == 0) {
     // Table does not exist, create it
