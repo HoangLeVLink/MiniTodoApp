@@ -1,0 +1,148 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+.todo-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+    text-align: left;
+}
+.todo-item:last-child {
+    border-bottom: none;
+}
+.todo-item .todo-id {
+    font-weight: bold;
+}
+.todo-item .todo-name {
+    margin-left: 10px;
+}
+.no-results {
+    color: #888;
+}
+.form-header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.form-body {
+    text-align: left;
+    padding: 20px;
+}
+.form-body label {
+    font-weight: bold;
+}
+.form-body input[type="text"] {
+    width: calc(100% - 20px); /* Adjust width as needed */
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.form-body input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.form-body input[type="submit"]:hover {
+    background-color: #45a049;
+}
+.todo-detail {
+    text-align: left;
+    padding: 20px;
+}
+.todo-detail .detail-item {
+    margin-bottom: 10px;
+}
+.todo-detail .detail-label {
+    font-weight: bold;
+}
+.no-results {
+    color: #888;
+}
+/* Inline style for demo purposes; consider moving to your CSS file */
+.todo-item {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    position: relative; /* Ensure relative positioning for absolute positioning of buttons */
+}
+.todo-buttons {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.todo-buttons button {
+    margin-left: 5px;
+    cursor: pointer;
+}
+.btn-edit {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+.btn-edit:hover {
+    background-color: darkblue;
+}
+.btn-detail {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+.btn-detail:hover {
+    background-color: darkgreen;
+}
+.btn-delete {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+.btn-delete:hover {
+    background-color: darkred;
+}
+.btn-new {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    padding: 10px 20px; /* Padding inside the button */
+    border: none; /* Remove borders */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center text */
+    display: inline-block; /* Display as inline-block */
+    text-decoration: none; /* Remove underline */
+    font-size: 16px; /* Increase font size */
+}
+
+.btn-new:hover {
+    background-color: #45a049; /* Darker green on hover */
+}

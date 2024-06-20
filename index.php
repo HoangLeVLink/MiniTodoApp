@@ -12,7 +12,9 @@
     } else {
         die("No controller");
     }
-    if ($action == 'edit' || $action == 'detail') {
+    // action that needs a following ID num
+    $idNeeded = ['edit', 'detail', 'update', 'delete'];
+    if (in_array($action, $idNeeded)) {
         if (isset($_GET['id'])) $id = $_GET['id'];
         else die("ID needed");
     }

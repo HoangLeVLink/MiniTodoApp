@@ -17,6 +17,7 @@ class Todo
     }
     # Retrieve full table
     function list () {
+        $this->conn->query("ALTER TABLE todo_list AUTO_INCREMENT = 1");
         $sql = "SELECT id, todo_name FROM todo_list";
         return $this->conn->query($sql);
     }
@@ -25,7 +26,7 @@ class Todo
         $sql = $this->conn->prepare("INSERT INTO todo_list (todo_name, content) VALUES (?, ?)");
         $sql->bind_param("ss", $todo_name, $content);
         if ($sql->execute()) {
-            echo "New record created successfully (riel)<br>";
+            // echo "New record created successfully (riel)<br>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error . "<br>";
         }
@@ -64,6 +65,12 @@ class Todo
         // $row = $result->fetch_assoc();
         // $sql->closed();
         return $result;
+    }
+    function delete($id) {
+        $sql = $this->conn->prepare("DELETE FROM todo_list WHERE id=?");
+        $sql->bind_param("i", $id);
+        $sql->execute();
+        $sql->close();
     }
 }
 ?>

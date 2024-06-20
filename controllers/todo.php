@@ -14,25 +14,47 @@
         function list()
         {
             $result = $this->_DB->list();
-            include_once "views/todo/list.php"; 
+            $this->show($result, __FUNCTION__);
         }
-
+        function show($result, $caller)
+        {
+            include_once "views/todo/$caller.php"; 
+        }
         function new()
         {
             include_once "views/todo/new.php";
-            if (empty($todo_name)) echo ("Awaiting ... (Todo Name required!!!)<br>");
-            else $this->_DB->new($todo_name, $content);
+        }
+        function create()
+        {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $todo_name = $_POST['todo_name'];
+                $content = $_POST['content'];
+            }
+            $this->_DB->new($todo_name, $content);
+            header("Location: list");
         }
         function edit($id)
         {
             include_once "views/todo/edit.php";
-            if (empty($todo_name) && empty($content)) echo ("Please make changes<br>");
-            else $this->_DB->edit($id, $todo_name, $content);
+        }
+        function update($id)
+        {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $todo_name = $_POST['todo_name'];
+                $content = $_POST['content'];
+            }
+            $this->_DB->edit($id, $todo_name, $content);
+            header("Location: /todo/list");
         }
         function detail($id)
         {
             $result = $this->_DB->detail($id);
-            include_once "views/todo/detail.php";
+            $this->show($result, __FUNCTION__);
+        }
+        function delete($id)
+        {
+            $result = $this->_DB->delete($id);
+            header("Location: /todo/list");
         }
     }
 ?>
