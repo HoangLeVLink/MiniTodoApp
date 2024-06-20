@@ -1,16 +1,6 @@
 <?php
     namespace Controllers;
     
-    // this is nowhere near autoload
-    // function load_model($filename,$result = NULL)
-    // {
-    //     $path_to_file = 'views/todo/' . $filename . '.php';
-
-    //     if (file_exists($path_to_file)) {
-    //         include_once $path_to_file;
-    //     }
-    // }
-
     class Todo
     {
         private $_DB;

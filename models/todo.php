@@ -62,7 +62,7 @@ class Todo
         $sql->execute();
         $result = $sql->get_result();
         // $row = $result->fetch_assoc();
-        // $sql->closed(); //no closing, i know, right?
+        // $sql->closed();
         return $result;
     }
 }
