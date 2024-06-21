@@ -19,7 +19,7 @@
                     echo '<div class="detail-item">';
                     echo '<span class="detail-label">ID:</span> ' . $row["id"] . '<br>';
                     echo '<span class="detail-label">Name:</span> ' . $row["todo_name"] . '<br>';
-                    echo '<span class="detail-label">Content (Full):</span> ' . htmlspecialchars($row["content"]) . '<br>';
+                    echo '<span class="detail-label">Content:</span> ' . htmlspecialchars($row["content"]) . '<br>';
                     echo '</div>';
                 }
             } else {

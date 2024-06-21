@@ -19,6 +19,7 @@
         function show($result, $caller)
         {
             include_once "views/todo/$caller.php"; 
+            // caller is either "list" or "detail"
         }
         function new()
         {
@@ -53,7 +54,7 @@
         }
         function delete($id)
         {
-            $result = $this->_DB->delete($id);
+            $this->_DB->delete($id);
             header("Location: /todo/list");
         }
     }

@@ -28,7 +28,7 @@ class Todo
         if ($sql->execute()) {
             // echo "New record created successfully (riel)<br>";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error . "<br>";
+            echo "Error: " . $sql . "<br>" . $this->conn->error . "<br>";
         }
         $sql->close();
     }
@@ -52,7 +52,7 @@ class Todo
         if ($sql->execute()) {
             echo "Record updated successfully (riel)<br>";
         } else {
-            echo "Error updating record: " . $conn->error . "<br>";
+            echo "Error updating record: " . $this->conn->error . "<br>";
         }
         $sql->close();
     }
